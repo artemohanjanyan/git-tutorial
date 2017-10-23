@@ -6,6 +6,9 @@
 \usepackage{booktabs}
 \usepackage{minted}
 \usepackage{tikz}
+%\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
 
 \usetikzlibrary{trees}
 
@@ -41,6 +44,7 @@
 \end{frame}
 
 \section{Мотивация}
+
 \subsection{История изменений}
 
 \begin{frame}[fragile]
@@ -65,7 +69,7 @@ $ ./a.out
     \end{block}
     \pause
     \only<+>{Работает!}
-    \only<+>{Ой, что-то сломалось. Зря я код не сохранил\dots}
+    \onslide<+->{Ой, что-то сломалось. Зря я код не сохранил\dots}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -90,10 +94,13 @@ $ ls versions
         \item[$+$] Просто
         \pause
         \item[$-$] Неудобно
+        \pause
+        \item[$-$] Дублирование файлов
     \end{itemize}
 \end{frame}
 
 \subsection{Резервировное копирование}
+
 \begin{frame}[fragile]
     \frametitle{Несчастные случаи}
     \begin{itemize}
@@ -106,7 +113,6 @@ $ ls versions
     \end{itemize}
 \end{frame}
 
-\subsection{Резервировное копирование}
 \begin{frame}[fragile]
     \frametitle{Больше архивов}
     \begin{itemize}
@@ -116,6 +122,7 @@ $ ls versions
 \end{frame}
 
 \subsection{Командная работа}
+
 \begin{frame}[fragile]
     \frametitle{Организация командной работы}
     Чат в телеграме:
@@ -145,6 +152,92 @@ $ ls versions
 \end{frame}
 
 \section{Принцип работы}
+
+\subsection{Структура}
+
+\begin{frame}[fragile]
+    \frametitle{Структура репозитория}
+
+    \only<3-4>{Список версий?}
+    \only<5-6>{Дерево версий?}
+    \onslide<7->{Ациклический граф версий\onslide<8->{, указатели}}
+
+    \newcommand{\sinceOne}[1]{\onslide<2->{#1}}
+    \newcommand{\sinceTwo}[1]{\onslide<4->{#1}}
+    \newcommand{\sinceThree}[1]{\onslide<6->{#1}}
+    \newcommand{\sinceFour}[1]{\onslide<8->{#1}}
+
+    \begin{block}{}
+        \begin{Verbatim}[commandchars=\\\{\}]
+\sinceThree{* \textcolor[HTML]{aa5500}{995aadd}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD}\textcolor[HTML]{aa5500}{ -> }\textcolor[HTML]{00aa00}{dev}\textcolor[HTML]{aa5500}{)}} Add main.cpp}
+\sinceThree{*   \textcolor[HTML]{aa5500}{72a5b82}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/dev}\textcolor[HTML]{aa5500}{)}} Merge branch 'manual'}
+\sinceThree{\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{aa5500}{\textbackslash}}
+\sinceThree{\textcolor[HTML]{00aa00}{|}} \sinceTwo{* \textcolor[HTML]{aa5500}{514cae7}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/manual}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{00aa00}{manual}\textcolor[HTML]{aa5500}{)}} Finish working on man}
+\sinceThree{\textcolor[HTML]{00aa00}{|}} \sinceTwo{* \textcolor[HTML]{aa5500}{f44e819} Start working on man}
+\sinceTwo{* \textcolor[HTML]{aa5500}{|} \textcolor[HTML]{aa5500}{ea84576} Update README.md}
+\sinceTwo{\textcolor[HTML]{aa5500}{|}\textcolor[HTML]{aa5500}{/}}
+\sinceOne{* \textcolor[HTML]{aa5500}{eefea48} Add LICENCE}
+\sinceOne{* \textcolor[HTML]{aa5500}{53f3d7a} Add README.md}
+        \end{Verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Buzzwords}
+    \begin{itemize}
+        \pause
+        \item Система контроля версий, version control system, VCS
+        \pause
+        \item Репозиторий
+        \pause
+        \item Версия "--- commit
+        \pause
+        \item Указатель "--- branch. \pause Не обязательно выглядит как ветка.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Копии файлов}
+    \begin{itemize}
+        \pause
+        \item На каждый commit создаётся копия всех изменённых файлов.
+        \pause
+        \item Файлы, которые не менялись, не копируются.
+        \pause
+        \item Можно было бы хранить только изменения (diff) файлов.
+            \pause Но git этого не делает.
+        \pause
+        \item Зато git (по умолчанию) сжимает файлы.
+    \end{itemize}
+\end{frame}
+
+\subsection{Децентрализация}
+
+\begin{frame}
+    \frametitle{git "--- децентрализованная VCS}
+    \begin{figure}
+        \includegraphics[height=0.8\textheight]{decentr}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Преимущества}
+    \begin{itemize}
+        \pause
+        \item Локальные изменения
+        \pause
+        \item Отказоустойчивость
+        \pause
+        \item Довольный Линус
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Довольный Линус}
+    \begin{figure}
+        \includegraphics[width=\textheight]{dictator}
+    \end{figure}
+\end{frame}
 
 \section{Основные команды}
 
