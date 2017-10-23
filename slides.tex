@@ -6,7 +6,6 @@
 \usepackage{booktabs}
 \usepackage{minted}
 \usepackage{tikz}
-%\usepackage{verbatim}
 \usepackage{fancyvrb}
 \usepackage{xcolor}
 
@@ -235,14 +234,56 @@ $ ls versions
 \begin{frame}
     \frametitle{Довольный Линус}
     \begin{figure}
-        \includegraphics[width=\textheight]{dictator}
+        \includegraphics[width=\textwidth]{dictator}
     \end{figure}
 \end{frame}
 
 \section{Основные команды}
 
+\begin{frame}[fragile]
+    \begin{minted}{bash}
+$ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
+          | sort | uniq -c | sort -n -r
+          | head -n 12
+    304 git add
+    300 git commit
+    244 git checkout
+    148 git push
+    131 git diff
+    110 git clone
+     75 git rm
+     69 git merge
+     68 git remote
+     62 git branch
+     47 git reset
+     45 git mv
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{minted}{bash}
+$ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
+          | sort | uniq -c | sort -n -r
+          | head -n 24 | tail -n 12
+     25 git log
+     17 git pull
+     14 git check-ignore
+     13 git ls-files
+     10 git fetch
+      9 git rebase
+      6 git stash
+      6 git cherry-pick
+      5 git status
+      5 git config
+      4 git ls-tree
+      3 git submodule
+    \end{minted}
+\end{frame}
+
 \section{Советы}
 
 \section{Продвинутые команды}
+
+\section{GitHub}
 
 \end{document}
