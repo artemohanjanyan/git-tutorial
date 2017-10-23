@@ -1,0 +1,155 @@
+\documentclass[pdf,russian]{beamer}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{tikz}
+
+\usetikzlibrary{trees}
+
+\selectlanguage{russian}
+
+\mode<presentation>{
+    \usetheme{Frankfurt}
+    \useoutertheme{infolines}
+}
+
+%% preamble
+\title{Введение в git}
+\author{Артем Оганджанян}
+\institute{CSC}
+\date{27 октября 2017 г.}
+
+\begin{document}
+
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Оглавление}
+        \tableofcontents
+        [
+            currentsection,
+            subsectionstyle=show/show/hide
+        ]
+    \end{frame}
+}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section{Мотивация}
+\subsection{История изменений}
+
+\begin{frame}[fragile]
+    \frametitle{Потеря кода}
+    \pause
+    Напишу-ка я тетрис.
+    \begin{block}{}
+        \begin{minted}{bash}
+$ vim tetris.cpp
+$ g++ tetris.cpp
+$ ./a.out
+        \end{minted}
+    \end{block}
+    \pause
+    Добавлю разные уровни сложности...
+    \begin{block}{}
+        \begin{minted}{bash}
+$ vim tetris.cpp
+$ g++ tetris.cpp
+$ ./a.out
+        \end{minted}
+    \end{block}
+    \pause
+    \only<+>{Работает!}
+    \only<+>{Ой, что-то сломалось. Зря я код не сохранил\dots}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Архивы}
+    \begin{block}{}
+        \begin{minted}{bash}
+$ ls versions
+        \end{minted}
+        \texttt{\textcolor[HTML]{aa0000}{v0.1.tar}} \quad
+        \texttt{\textcolor[HTML]{aa0000}{v0.2.tar}} \quad
+        \pause
+        \texttt{\textcolor[HTML]{aa0000}{v0.3.tar}} \quad
+        \texttt{\textcolor[HTML]{aa0000}{v0.4.tar}} \quad
+        \texttt{\textcolor[HTML]{aa0000}{v0.5.tar}} \quad
+        \texttt{\textcolor[HTML]{aa0000}{v0.6.tar}} \quad
+        \texttt{\textcolor[HTML]{aa0000}{v0.7.tar}} \quad
+        \texttt{\textcolor[HTML]{aa0000}{v0.8.tar}} \quad
+        \texttt{\textcolor[HTML]{aa0000}{v0.9.tar}}
+    \end{block}
+    \begin{itemize}
+        \pause
+        \item[$+$] Просто
+        \pause
+        \item[$-$] Неудобно
+    \end{itemize}
+\end{frame}
+
+\subsection{Резервировное копирование}
+\begin{frame}[fragile]
+    \frametitle{Несчастные случаи}
+    \begin{itemize}
+        \pause
+        \item Украли ноутбук
+        \pause
+        \item Утопили ноутбук
+        \pause
+        \item Умер жёсткий диск
+    \end{itemize}
+\end{frame}
+
+\subsection{Резервировное копирование}
+\begin{frame}[fragile]
+    \frametitle{Больше архивов}
+    \begin{itemize}
+        \item На флешке
+        \item На Яндекс.Диске
+    \end{itemize}
+\end{frame}
+
+\subsection{Командная работа}
+\begin{frame}[fragile]
+    \frametitle{Организация командной работы}
+    Чат в телеграме:
+    \begin{itemize}
+        \pause
+        \item[A:] Так, я сейчас сделаю это.
+        \pause
+        \item[B:] А я это сделаю.
+        \pause
+        \item[C:] Ой, тут баг есть, сейчас поправлю.
+        \pause
+        \item[A:] Стой! Не трогай тот код, я его сейчас изменяю.
+        \pause
+        \item[D:] Привет, я вернулся. У кого сейчас последняя версия исходников?
+        \pause
+        \item[B:] Я закончил.
+        \pause
+        \item[A:] Блин, я тоже тот файл правил...
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Организация командной работы}
+    Больше людей "--- ещё хуже.
+    \pause
+    Как решать проблему?
+\end{frame}
+
+\section{Принцип работы}
+
+\section{Основные команды}
+
+\section{Советы}
+
+\section{Продвинутые команды}
+
+\end{document}
