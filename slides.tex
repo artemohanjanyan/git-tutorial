@@ -427,12 +427,15 @@ $ git log --graph --decorate --oneline
 \begin{frame}[fragile]
     \frametitle{git merge}
     \begin{itemize}
-        \pause
+        \onslide<2->
         \item \mintinline{bash}{$ git merge feature}
-        \pause
+        \onslide<3->
         \item merge-конфликты
+        \onslide<5->
+        \item fast-forward
     \end{itemize}
     \pause
+    \onslide<4->
     \begin{exampleblock}{Пример}
         \begin{Verbatim}
 <<<<<<< HEAD
@@ -442,6 +445,90 @@ Changes on feature
 >>>>>>> feature
         \end{Verbatim}
     \end{exampleblock}
+\end{frame}
+
+\subsection{Удалённые репозитории}
+\begin{frame}[fragile]
+    \frametitle{Удалённые репозитории}
+    \begin{itemize}
+        \item<1-> \mintinline{bash}{$ git remote}
+            \onslide<5->{\mintinline{bash}{ --help}}
+        \item<2-> \mintinline{bash}{$ git fetch}
+            \onslide<5->{\mintinline{bash}{ --help}}
+        \item<3-> \mintinline{bash}{$ git push}
+            \onslide<5->{\mintinline{bash}{ --help}}
+        \item<4-> \mintinline{bash}{$ git pull}
+            \onslide<5->{\mintinline{bash}{ --help}}
+    \end{itemize}
+    \begin{exampleblock}{Пример}
+        \mintinline[fontsize=\relsize{-2}]{bash}{$ git remote add origin https://github.com/artemohanjanyan/git-tutorial.git}
+    \end{exampleblock}
+\end{frame}
+
+\section{Советы}
+
+\subsection{Коммиты}
+
+\begin{frame}
+    \frametitle{Коммиты}
+    \pause
+    \center
+    \includegraphics[width=0.95\textwidth]{commits}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Частота коммитов}
+    \begin{itemize}
+        \item Маленькие коммиты с конкретными изменениями
+        \pause
+        \item[$-$] \texttt{a lot of code}
+        \pause
+        \item[$-$] \texttt{something}
+        \pause
+        \item[$\pm$] \texttt{some progress on issue \#{}5}
+        \pause
+        \item[$+$] \texttt{Fix issue \#{}5}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Сообщенния коммитов}
+    \pause
+    \begin{enumerate}
+        \item Отделяем заголовок от тела пустой строкой.
+        \item Заголовок не длиннее 50 символов,
+        \item с большой буквы,
+        \item без точки в конце,
+        \item в повелительном наклонении.
+        \item Тело умещаем в 72 символа по ширине,
+        \item описываем в нём "<что">, а не "<как">.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Пример}
+
+    \newcommand{\sinceTwo}[1]{\onslide<3->{#1}}
+
+    \pause
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\relsize{-2}]
+\sinceTwo{*   \textcolor[HTML]{aa5500}{5eab8ed} Merge pull request #6 from artemohanjanyan/master}
+\sinceTwo{\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{aa5500}{\textbackslash}  }
+\sinceTwo{\textcolor[HTML]{00aa00}{|}} * \textcolor[HTML]{aa5500}{276da50} Compile pdf
+\sinceTwo{\textcolor[HTML]{00aa00}{|}} * \textcolor[HTML]{aa5500}{611092f} Add \textbackslash{}mathrm to 'ord' keyword
+\sinceTwo{\textcolor[HTML]{00aa00}{|}} * \textcolor[HTML]{aa5500}{0ba96ea} Use \textbackslash{}coloneqq instead of :=
+\sinceTwo{\textcolor[HTML]{00aa00}{|}} * \textcolor[HTML]{aa5500}{6be881a} Use \textbackslash{}mathit for keywords such as 'Consis', 'Proof' etc
+\sinceTwo{\textcolor[HTML]{00aa00}{|}} * \textcolor[HTML]{aa5500}{8cc97bb} Use function commands instead of plain names for better typesetting
+\sinceTwo{\textcolor[HTML]{00aa00}{|}} * \textcolor[HTML]{aa5500}{85a128e} Use \textbackslash{}mid instead of | for better spacing
+\sinceTwo{\textcolor[HTML]{00aa00}{|}} * \textcolor[HTML]{aa5500}{1d85a0c} Use \textbackslash{}with instead of \textbackslash{}& for better spacing
+    \end{Verbatim}
+\end{frame}
+
+\subsection{Всякое}
+
+\begin{frame}
+    \frametitle{.gitignore}
+    Перечисляем файлы, которые git должен игнорировать.
 \end{frame}
 
 \begin{frame}
@@ -460,6 +547,26 @@ Changes on feature
         \pause
         \item \mintinline{bash}{$ man git-rev-parse}
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{SSH ключи}
+    \begin{itemize}
+        \item Чтобы не писать пароль каждый раз.
+        \pause
+        \item Создаём.
+        \pause
+        \item Открытый ключ отправляем на сервер.
+        \pause
+        \item Закрытым ключом доказываем, что мы это мы.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Git flow}
+    \pause
+    \center
+    \includegraphics[height=0.8\textheight]{flow}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -484,10 +591,27 @@ $ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
     \end{minted}
 \end{frame}
 
-\section{Советы}
-
-\section{Продвинутые команды}
-
 \section{GitHub}
+
+\begin{frame}
+    \frametitle{Что такое GitHub?}
+    \begin{itemize}
+        \pause
+        \item Бесплатные открытые репозитории
+        \pause
+        \item Pull request-ы
+        \pause
+        \item fork-и
+        \pause
+        \item \url{https://github.com/artemohanjanyan/git-tutorial}
+            \pause\texttt{\#{}csc-seminar}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Вопросы?}
+    \pause
+    Спасибо за внимание!
+\end{frame}
 
 \end{document}
