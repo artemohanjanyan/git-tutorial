@@ -8,6 +8,7 @@
 \usepackage{tikz}
 \usepackage{fancyvrb}
 \usepackage{xcolor}
+\usepackage{relsize}
 
 \usetikzlibrary{trees}
 
@@ -155,7 +156,7 @@ $ ls versions
 \subsection{Структура}
 
 \begin{frame}[fragile]
-    \frametitle{Структура репозитория}
+    \frametitle{Структура хранилища}
 
     \only<3-4>{Список версий?}
     \only<5-6>{Дерево версий?}
@@ -173,8 +174,8 @@ $ ls versions
 \sinceThree{\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{aa5500}{\textbackslash}}
 \sinceThree{\textcolor[HTML]{00aa00}{|}} \sinceTwo{* \textcolor[HTML]{aa5500}{514cae7}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/manual}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{00aa00}{manual}\textcolor[HTML]{aa5500}{)}} Finish working on man}
 \sinceThree{\textcolor[HTML]{00aa00}{|}} \sinceTwo{* \textcolor[HTML]{aa5500}{f44e819} Start working on man}
-\sinceTwo{* \textcolor[HTML]{aa5500}{|} \textcolor[HTML]{aa5500}{ea84576} Update README.md}
-\sinceTwo{\textcolor[HTML]{aa5500}{|}\textcolor[HTML]{aa5500}{/}}
+\sinceOne{*} \sinceTwo{\textcolor[HTML]{aa5500}{|}} \sinceOne{\textcolor[HTML]{aa5500}{ea84576} Update README.md}
+\sinceOne{\textcolor[HTML]{aa5500}{|}}\sinceTwo{\textcolor[HTML]{aa5500}{/}}
 \sinceOne{* \textcolor[HTML]{aa5500}{eefea48} Add LICENCE}
 \sinceOne{* \textcolor[HTML]{aa5500}{53f3d7a} Add README.md}
         \end{Verbatim}
@@ -185,11 +186,11 @@ $ ls versions
     \frametitle{Buzzwords}
     \begin{itemize}
         \pause
-        \item Система контроля версий, version control system, VCS
+        \item Система контроля версий, version control system, VSC.
         \pause
-        \item Репозиторий
+        \item Репозиторий.
         \pause
-        \item Версия "--- commit
+        \item Версия "--- commit.
         \pause
         \item Указатель "--- branch. \pause Не обязательно выглядит как ветка.
     \end{itemize}
@@ -241,10 +242,230 @@ $ ls versions
 \section{Основные команды}
 
 \begin{frame}[fragile]
+    \frametitle{Самый бесполезный раздел}
+    \pause
+    \center
+    \only<+>{\includegraphics[height=0.8\textheight,keepaspectratio]{alice.jpg}}
+    \onslide<+->
+    \begin{Verbatim}[fontsize=\relsize{-3}]
+$ git
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+    \end{Verbatim}
+\end{frame}
+
+\subsection{Начало работы}
+
+\begin{frame}
+    \frametitle{Установка}
+    \onslide<1->\mintinline{bash}{$ sudo apt install git} \\
+    \onslide<1->\mintinline{bash}{$ git config}
+    \onslide<3->\mintinline{bash}{ --help}\\
+    \onslide<4->\mintinline{bash}{$ man git-config}
+    \onslide<2->
+    \begin{exampleblock}{Пример}
+        \mintinline{bash}{$ git config --global user.name "Artem Ohanjanyan"}
+        \mintinline{bash}{$ git config --global user.email artemohanjanyan@gmail.com}
+        \mintinline{bash}{$ git config --global core.editor vim}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Получение репозитория}
+    \begin{itemize}
+        \item<2-> \mintinline{bash}{$ git init}
+            \onslide<5->{\mintinline{bash}{ --help}}
+        \item<3-> \mintinline{bash}{$ git clone}
+            \onslide<5->{\mintinline{bash}{ --help}}
+    \end{itemize}
+    \onslide<4->
+    \begin{exampleblock}{Пример}
+        \mintinline{bash}{git clone https://github.com/artemohanjanyan/git-tutorial.git}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Учёт изменений}
+
+\begin{frame}
+    \frametitle{Жизненный цикл файла}
+    \center
+    \includegraphics[width=0.9\textwidth]{lifecycle}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Команды}
+    \begin{itemize}
+        \item<1-> \mintinline{bash}{$ git add}
+            \onslide<3->{\mintinline{bash}{ --help}}
+        \item<1-> \mintinline{bash}{$ git mv}
+            \onslide<3->{\mintinline{bash}{ --help}}
+        \item<1-> \mintinline{bash}{$ git reset}
+            \onslide<3->{\mintinline{bash}{ --help}}
+        \item<1-> \mintinline{bash}{$ git rm}
+            \onslide<3->{\mintinline{bash}{ --help}}
+    \end{itemize}
+    \onslide<2->
+    \begin{exampleblock}{Пример}
+        \mintinline{bash}{$ git add slides.tex}\\
+        \mintinline{bash}{$ git mv dictator.png img/}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Проверка}
+
+\begin{frame}[fragile]
+    \frametitle{Команды}
+    \begin{itemize}
+        \item<1-> \mintinline{bash}{$ git status}
+            \onslide<3->{\mintinline{bash}{ --help}}
+        \item<1-> \mintinline{bash}{$ git log}
+            \onslide<3->{\mintinline{bash}{ --help}}
+    \end{itemize}
+    \onslide<2->
+    \begin{exampleblock}{Пример}
+        \begin{Verbatim}[fontsize=\relsize{-3},commandchars=\\\{\}]
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	\textcolor[HTML]{00aa00}{modified:   Makefile}
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	\textcolor[HTML]{aa0000}{modified:   slides.tex}
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	\textcolor[HTML]{aa0000}{alice.jpg}
+	\textcolor[HTML]{aa0000}{lifecycle.png}
+        \end{Verbatim}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Команды}
+    \begin{exampleblock}{Пример}
+        \begin{Verbatim}[commandchars=\\\{\}]
+$ git log --graph --decorate --oneline
+* \textcolor[HTML]{aa5500}{995aadd}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD}\textcolor[HTML]{aa5500}{ -> }\textcolor[HTML]{00aa00}{dev}\textcolor[HTML]{aa5500}{)} Add main.cpp
+*   \textcolor[HTML]{aa5500}{72a5b82}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/dev}\textcolor[HTML]{aa5500}{)} Merge branch 'manual'
+\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{aa5500}{\textbackslash}
+\textcolor[HTML]{00aa00}{|} * \textcolor[HTML]{aa5500}{514cae7}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/manual}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{00aa00}{manual}\textcolor[HTML]{aa5500}{)} Finish working on man
+\textcolor[HTML]{00aa00}{|} * \textcolor[HTML]{aa5500}{f44e819} Start working on man
+* \textcolor[HTML]{aa5500}{|} \textcolor[HTML]{aa5500}{ea84576} Update README.md
+\textcolor[HTML]{aa5500}{|}\textcolor[HTML]{aa5500}{/}
+* \textcolor[HTML]{aa5500}{eefea48} Add LICENCE
+* \textcolor[HTML]{aa5500}{53f3d7a} Add README.md
+        \end{Verbatim}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Внесение изменений}
+\begin{frame}
+    \frametitle{Команды}
+    \begin{itemize}
+        \item<1-> \mintinline{bash}{$ git commit}
+            \onslide<7->{\mintinline{bash}{ --help}}
+        \item<2-> \mintinline{bash}{$ git checkout}
+            \onslide<7->{\mintinline{bash}{ --help}}
+        \item<3-> \mintinline{bash}{$ git diff}
+            \onslide<7->{\mintinline{bash}{ --help}}
+        \item<4-> \mintinline{bash}{$ git merge}
+            \onslide<7->{\mintinline{bash}{ --help}}
+        \item<5-> \mintinline{bash}{$ git branch}
+            \onslide<7->{\mintinline{bash}{ --help}}
+        \item<6-> \mintinline{bash}{$ git tag}
+            \onslide<7->{\mintinline{bash}{ --help}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{git commit}
+    \center
+    \includegraphics[width=0.95\textwidth]{vim}
+\end{frame}
+
+\begin{frame}
+    \frametitle{git checkout}
+    \center
+    \begin{itemize}
+        \pause
+        \item \mintinline{bash}{$ git checkout master}
+        \pause
+        \item \mintinline{bash}{$ git checkout 6be2821}
+        \pause
+        \item \mintinline{bash}{$ git checkout -b feature}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{git merge}
+    \begin{itemize}
+        \pause
+        \item \mintinline{bash}{$ git merge feature}
+        \pause
+        \item merge-конфликты
+    \end{itemize}
+    \pause
+    \begin{exampleblock}{Пример}
+        \begin{Verbatim}
+<<<<<<< HEAD
+Changes on master
+=======
+Changes on feature
+>>>>>>> feature
+        \end{Verbatim}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ссылки на коммиты}
+    \begin{itemize}
+        \pause
+        \item \texttt{HEAD}, \texttt{master}
+        \pause
+        \item \texttt{HEAD\~{}}
+        \pause
+        \item \texttt{HEAD\~{}\~{}\~{}}
+        \pause
+        \item \texttt{HEAD\~{}10}
+        \pause
+        \item \texttt{HEAD\^{}\^{}}
+        \pause
+        \item \mintinline{bash}{$ man git-rev-parse}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
     \begin{minted}{bash}
 $ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
-          | sort | uniq -c | sort -n -r
-          | head -n 12
+          | sort | uniq -c | sort -n -r | head -n 13
     304 git add
     300 git commit
     244 git checkout
@@ -257,26 +478,9 @@ $ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
      62 git branch
      47 git reset
      45 git mv
-    \end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{minted}{bash}
-$ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
-          | sort | uniq -c | sort -n -r
-          | head -n 24 | tail -n 12
      25 git log
      17 git pull
      14 git check-ignore
-     13 git ls-files
-     10 git fetch
-      9 git rebase
-      6 git stash
-      6 git cherry-pick
-      5 git status
-      5 git config
-      4 git ls-tree
-      3 git submodule
     \end{minted}
 \end{frame}
 
