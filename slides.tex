@@ -449,6 +449,65 @@ Changes on feature
 
 \subsection{Удалённые репозитории}
 \begin{frame}[fragile]
+    \frametitle{Удалённые ветки}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\relsize{-2}]
+* \textcolor[HTML]{aa5500}{3d6c452}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{upstream/master}\textcolor[HTML]{aa5500}{)} build version update 3.0.1
+* \textcolor[HTML]{aa5500}{9d35a7a} Changelog updated for 3.0.1
+* \textcolor[HTML]{aa5500}{425bd86} SolidMap equals improvement
+*   \textcolor[HTML]{aa5500}{f96d7e1} Merge pull request #17 from artemohanjanyan/equals
+\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{aa5500}{\textbackslash}  
+\textcolor[HTML]{00aa00}{|} * \textcolor[HTML]{aa5500}{670d71e}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/equals}\textcolor[HTML]{aa5500}{)} Add more tests
+\textcolor[HTML]{00aa00}{|} * \textcolor[HTML]{aa5500}{ba53c22} Improve equals implementation
+\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{00aa00}{/}  
+*   \textcolor[HTML]{aa5500}{b7bd7f3} Merge pull request #15 from artemohanjanyan/zipWith
+\textcolor[HTML]{0000aa}{|}\textcolor[HTML]{E850A8}{\textbackslash}  
+\textcolor[HTML]{0000aa}{|} * \textcolor[HTML]{aa5500}{7c55777} Generalize zipWith argument
+\textcolor[HTML]{0000aa}{|} * \textcolor[HTML]{aa5500}{238c358} Add zipWith operator
+* \textcolor[HTML]{E850A8}{|}   \textcolor[HTML]{aa5500}{d8c1109} Merge pull request #14 from artemohanjanyan/patch-1
+\textcolor[HTML]{E850A8}{|}\textcolor[HTML]{aa0000}{\textbackslash} \textcolor[HTML]{E850A8}{\textbackslash}  
+\textcolor[HTML]{E850A8}{|} \textcolor[HTML]{aa0000}{|}\textcolor[HTML]{E850A8}{/}  
+\textcolor[HTML]{E850A8}{|}\textcolor[HTML]{E850A8}{/}\textcolor[HTML]{aa0000}{|}   
+\textcolor[HTML]{E850A8}{|} * \textcolor[HTML]{aa5500}{72b251f} Update flatMap javadoc
+\textcolor[HTML]{E850A8}{|}\textcolor[HTML]{E850A8}{/}  
+* \textcolor[HTML]{aa5500}{652acad}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD}\textcolor[HTML]{aa5500}{ -> }\textcolor[HTML]{00aa00}{master}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{aa0000}{origin/master}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{aa0000}{origin/HEAD}\textcolor[HTML]{aa5500}{)} 3.0.0
+    \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Удалённые ветки}
+    \begin{itemize}
+        \item<1-3> \mintinline{bash}{$ git checkout -b equals origin/equals}
+        \item<2-3> \mintinline{bash}{$ git checkout --track origin/equals}
+        \item<3> \mintinline{bash}{$ git checkout equals}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Удалённые ветки}
+    \begin{Verbatim}[commandchars=\\\{\},fontsize=\relsize{-2}]
+* \textcolor[HTML]{aa5500}{3d6c452}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{upstream/master}\textcolor[HTML]{aa5500}{)} build version update 3.0.1
+* \textcolor[HTML]{aa5500}{9d35a7a} Changelog updated for 3.0.1
+* \textcolor[HTML]{aa5500}{425bd86} SolidMap equals improvement
+*   \textcolor[HTML]{aa5500}{f96d7e1} Merge pull request #17 from artemohanjanyan/equals
+\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{aa5500}{\textbackslash}  
+\textcolor[HTML]{00aa00}{|} * \textcolor[HTML]{aa5500}{670d71e}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD}\textcolor[HTML]{aa5500}{ -> }\textcolor[HTML]{00aa00}{equals}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{aa0000}{origin/equals}\textcolor[HTML]{aa5500}{)} Add more tests
+\textcolor[HTML]{00aa00}{|} * \textcolor[HTML]{aa5500}{ba53c22} Improve equals implementation
+\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{00aa00}{/}  
+*   \textcolor[HTML]{aa5500}{b7bd7f3} Merge pull request #15 from artemohanjanyan/zipWith
+\textcolor[HTML]{0000aa}{|}\textcolor[HTML]{E850A8}{\textbackslash}  
+\textcolor[HTML]{0000aa}{|} * \textcolor[HTML]{aa5500}{7c55777} Generalize zipWith argument
+\textcolor[HTML]{0000aa}{|} * \textcolor[HTML]{aa5500}{238c358} Add zipWith operator
+* \textcolor[HTML]{E850A8}{|}   \textcolor[HTML]{aa5500}{d8c1109} Merge pull request #14 from artemohanjanyan/patch-1
+\textcolor[HTML]{E850A8}{|}\textcolor[HTML]{aa0000}{\textbackslash} \textcolor[HTML]{E850A8}{\textbackslash}  
+\textcolor[HTML]{E850A8}{|} \textcolor[HTML]{aa0000}{|}\textcolor[HTML]{E850A8}{/}  
+\textcolor[HTML]{E850A8}{|}\textcolor[HTML]{E850A8}{/}\textcolor[HTML]{aa0000}{|}   
+\textcolor[HTML]{E850A8}{|} * \textcolor[HTML]{aa5500}{72b251f} Update flatMap javadoc
+\textcolor[HTML]{E850A8}{|}\textcolor[HTML]{E850A8}{/}  
+* \textcolor[HTML]{aa5500}{652acad}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/master}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{aa0000}{origin/HEAD}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{00aa00}{master}\textcolor[HTML]{aa5500}{)} 3.0.0
+    \end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
     \frametitle{Удалённые репозитории}
     \begin{itemize}
         \item<1-> \mintinline{bash}{$ git remote}
