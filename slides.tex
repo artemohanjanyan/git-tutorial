@@ -651,6 +651,18 @@ $ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
 \end{frame}
 
 \begin{frame}
+    \frametitle{Danger zone}
+    \begin{itemize}
+        \item \mintinline{bash}{$ git rebase}
+        \item \mintinline{bash}{$ git cherry-pick}
+        \pause
+        \item Опасно
+        \pause
+        \item \mintinline{bash}{$ git reflog}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
     \frametitle{Альтернативы}
     \begin{itemize}
         \item Subversion
