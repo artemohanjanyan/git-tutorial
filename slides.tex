@@ -21,8 +21,8 @@
 
 \title{Введение в git}
 \author{Артем Оганджанян}
-\institute{CSC}
-\date{27 октября 2017 г.}
+\institute{ЛОЛ-2021}
+\date{9 августа 2021 г.}
 
 \begin{document}
 
@@ -58,7 +58,7 @@ $ ./a.out
         \end{minted}
     \end{block}
     \pause
-    Добавлю разные уровни сложности...
+    Добавлю меню...
     \begin{block}{}
         \begin{minted}{bash}
 $ vim tetris.cpp
@@ -109,48 +109,49 @@ $ ls versions
         \item Утопили ноутбук
         \pause
         \item Умер жёсткий диск
+        \pause
+        \item Бекапы?
+        \pause
+        \begin{itemize}
+            \item На флешке
+            \item В облаке
+            \pause
+            \item Неудобно, ещё больше архивов
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
+\subsection{Работа в команде}
+
 \begin{frame}[fragile]
-    \frametitle{Больше архивов}
+    \frametitle{Работа в команде}
     \begin{itemize}
-        \item На флешке
-        \item На Яндекс.Диске
+        \item Алиса: \\
+        \pause
+            \texttt{\textcolor[HTML]{aa0000}{v0.1.tar}} \quad
+            \texttt{\textcolor[HTML]{aa0000}{v0.2.tar}}
+        \pause
+        \item Приходит Боб: \\
+        \pause
+            \texttt{\textcolor[HTML]{aa0000}{v0.3.tar}} \quad
+            \texttt{\textcolor[HTML]{aa0000}{v0.4.tar}}
+        \pause
+        \item Тем временем Алиса: \\
+            \texttt{\textcolor[HTML]{aa0000}{v0.1.tar}} \quad
+            \texttt{\textcolor[HTML]{aa0000}{v0.2.tar}} \quad
+            \texttt{\textcolor[HTML]{aa0000}{v0.3.tar}} \quad
+            \texttt{\textcolor[HTML]{aa0000}{v0.4.tar}} \quad
+            \texttt{\textcolor[HTML]{aa0000}{v0.5.tar}}
+        \pause
+        \item Приходит Ева. \pause Где сейчас последняя версия?
+        \pause
+        \item Надо совместить наработки. \pause Много пересекающихся изменений.
+        \pause
+        \item Нет линейной истории версий.
     \end{itemize}
 \end{frame}
 
-\subsection{Командная работа}
-
-\begin{frame}[fragile]
-    \frametitle{Организация командной работы}
-    Чат в телеграме:
-    \begin{itemize}
-        \pause
-        \item[A:] Так, я сейчас сделаю это.
-        \pause
-        \item[B:] А я это сделаю.
-        \pause
-        \item[C:] Ой, тут баг есть, сейчас поправлю.
-        \pause
-        \item[A:] Стой! Не трогай тот код, я его сейчас изменяю.
-        \pause
-        \item[D:] Привет, я вернулся. У кого сейчас последняя версия исходников?
-        \pause
-        \item[B:] Я закончил.
-        \pause
-        \item[A:] Блин, я тоже тот файл правил...
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Организация командной работы}
-    Больше людей "--- ещё хуже.
-    \pause
-    Как решать проблему?
-\end{frame}
-
-\section{Принцип работы}
+\section{Принцип работы git}
 
 \subsection{Структура}
 
@@ -182,7 +183,7 @@ $ ls versions
 \end{frame}
 
 \begin{frame}
-    \frametitle{Buzzwords}
+    \frametitle{Термины}
     \begin{itemize}
         \pause
         \item Система контроля версий, version control system, VSC.
@@ -244,34 +245,35 @@ $ ls versions
     \frametitle{Самый бесполезный раздел}
     \pause
     \center
-    \only<+>{\includegraphics[height=0.8\textheight,keepaspectratio]{alice.jpg}}
+    \only<+>{\includegraphics[height=0.8\textheight,keepaspectratio]{assistant.jpg}}
     \onslide<+->
     \begin{Verbatim}[fontsize=\relsize{-3}]
 $ git
-usage: git [--version] [--help] [-C <path>] [-c name=value]
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
            [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
            [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
            <command> [<args>]
 
 These are common Git commands used in various situations:
 
 start a working area (see also: git help tutorial)
-   clone      Clone a repository into a new directory
-   init       Create an empty Git repository or reinitialize an existing one
+   clone     Clone a repository into a new directory
+   init      Create an empty Git repository or reinitialize an existing one
 
 work on the current change (see also: git help everyday)
-   add        Add file contents to the index
-   mv         Move or rename a file, a directory, or a symlink
-   reset      Reset current HEAD to the specified state
-   rm         Remove files from the working tree and from the index
+   add       Add file contents to the index
+   mv        Move or rename a file, a directory, or a symlink
+   restore   Restore working tree files
+   rm        Remove files from the working tree and from the index
 
 examine the history and state (see also: git help revisions)
-   bisect     Use binary search to find the commit that introduced a bug
-   grep       Print lines matching a pattern
-   log        Show commit logs
-   show       Show various types of objects
-   status     Show the working tree status
+   bisect    Use binary search to find the commit that introduced a bug
+   diff      Show changes between commits, commit and working tree, etc
+   grep      Print lines matching a pattern
+   log       Show commit logs
+   show      Show various types of objects
+   status    Show the working tree status
     \end{Verbatim}
 \end{frame}
 
@@ -665,8 +667,8 @@ $ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
 \begin{frame}
     \frametitle{Альтернативы}
     \begin{itemize}
-        \item Subversion
-        \item Mercurial
+        \item Subversion "--- централизованная, старая.
+        \item Mercurial "--- как git, но написана на Python.
     \end{itemize}
 \end{frame}
 
@@ -683,7 +685,7 @@ $ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
         \item fork-и
         \pause
         \item \url{https://github.com/artemohanjanyan/git-tutorial}
-            \pause\texttt{\#{}csc-seminar}
+            \pause\texttt{\#{}lol-2021}
     \end{itemize}
 \end{frame}
 
