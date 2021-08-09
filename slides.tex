@@ -158,26 +158,19 @@ $ ls versions
 \begin{frame}[fragile]
     \frametitle{Структура хранилища}
 
-    \only<3-4>{Список версий?}
-    \only<5-6>{Дерево версий?}
-    \onslide<7->{Ациклический граф версий\onslide<8->{, указатели}}
-
-    \newcommand{\sinceOne}[1]{\onslide<2->{#1}}
-    \newcommand{\sinceTwo}[1]{\onslide<4->{#1}}
-    \newcommand{\sinceThree}[1]{\onslide<6->{#1}}
-    \newcommand{\sinceFour}[1]{\onslide<8->{#1}}
-
+    Ациклический граф версий, указатели
     \begin{block}{}
         \begin{Verbatim}[commandchars=\\\{\}]
-\sinceThree{* \textcolor[HTML]{aa5500}{995aadd}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD}\textcolor[HTML]{aa5500}{ -> }\textcolor[HTML]{00aa00}{dev}\textcolor[HTML]{aa5500}{)}} Add main.cpp}
-\sinceThree{*   \textcolor[HTML]{aa5500}{72a5b82}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/dev}\textcolor[HTML]{aa5500}{)}} Merge branch 'manual'}
-\sinceThree{\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{aa5500}{\textbackslash}}
-\sinceThree{\textcolor[HTML]{00aa00}{|}} \sinceTwo{* \textcolor[HTML]{aa5500}{514cae7}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/manual}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{00aa00}{manual}\textcolor[HTML]{aa5500}{)}} Finish working on man}
-\sinceThree{\textcolor[HTML]{00aa00}{|}} \sinceTwo{* \textcolor[HTML]{aa5500}{f44e819} Start working on man}
-\sinceOne{*} \sinceTwo{\textcolor[HTML]{aa5500}{|}} \sinceOne{\textcolor[HTML]{aa5500}{ea84576} Update README.md}
-\sinceOne{\textcolor[HTML]{aa5500}{|}}\sinceTwo{\textcolor[HTML]{aa5500}{/}}
-\sinceOne{* \textcolor[HTML]{aa5500}{eefea48} Add LICENCE}
-\sinceOne{* \textcolor[HTML]{aa5500}{53f3d7a} Add README.md}
+*   \textcolor[HTML]{aa5500}{4d21842}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aa00}{alice}\textcolor[HTML]{aa5500}{)} Merge branch 'bob' into alice
+\textcolor[HTML]{aa0000}{|}\textcolor[HTML]{00aa00}{\textbackslash}
+\textcolor[HTML]{aa0000}{|} * \textcolor[HTML]{aa5500}{f2af708}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD -> }\textcolor[HTML]{00aa00}{bob}\textcolor[HTML]{aa5500}{)} Add menu
+\textcolor[HTML]{aa0000}{|} * \textcolor[HTML]{aa5500}{efbd2a5} Add score
+* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{6ef17c4} Add Z-shapes
+* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{6347d69} Add L-shapes
+* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{b054512} Add line
+\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{00aa00}{/}
+* \textcolor[HTML]{aa5500}{0d0461e} Add square
+* \textcolor[HTML]{aa5500}{f4d5af4} Initial commit
         \end{Verbatim}
     \end{block}
 \end{frame}
@@ -348,24 +341,19 @@ examine the history and state (see also: git help revisions)
     \begin{exampleblock}{Пример}
         \begin{Verbatim}[fontsize=\relsize{-3},commandchars=\\\{\}]
 $ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
+On branch bob
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	\textcolor[HTML]{00aa00}{modified:   Makefile}
+  (use "git restore --staged <file>..." to unstage)
+	\textcolor[HTML]{00aa00}{modified:   main.cpp}
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	\textcolor[HTML]{aa0000}{modified:   slides.tex}
+  (use "git restore <file>..." to discard changes in working directory)
+	\textcolor[HTML]{aa0000}{modified:   main.cpp}
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-
-	\textcolor[HTML]{aa0000}{alice.jpg}
-	\textcolor[HTML]{aa0000}{lifecycle.png}
+	\textcolor[HTML]{aa0000}{scoreboard}
         \end{Verbatim}
     \end{exampleblock}
 \end{frame}
@@ -375,15 +363,16 @@ Untracked files:
     \begin{exampleblock}{Пример}
         \begin{Verbatim}[commandchars=\\\{\}]
 $ git log --graph --decorate --oneline
-* \textcolor[HTML]{aa5500}{995aadd}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD}\textcolor[HTML]{aa5500}{ -> }\textcolor[HTML]{00aa00}{dev}\textcolor[HTML]{aa5500}{)} Add main.cpp
-*   \textcolor[HTML]{aa5500}{72a5b82}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/dev}\textcolor[HTML]{aa5500}{)} Merge branch 'manual'
-\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{aa5500}{\textbackslash}
-\textcolor[HTML]{00aa00}{|} * \textcolor[HTML]{aa5500}{514cae7}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{aa0000}{origin/manual}\textcolor[HTML]{aa5500}{, }\textcolor[HTML]{00aa00}{manual}\textcolor[HTML]{aa5500}{)} Finish working on man
-\textcolor[HTML]{00aa00}{|} * \textcolor[HTML]{aa5500}{f44e819} Start working on man
-* \textcolor[HTML]{aa5500}{|} \textcolor[HTML]{aa5500}{ea84576} Update README.md
-\textcolor[HTML]{aa5500}{|}\textcolor[HTML]{aa5500}{/}
-* \textcolor[HTML]{aa5500}{eefea48} Add LICENCE
-* \textcolor[HTML]{aa5500}{53f3d7a} Add README.md
+*   \textcolor[HTML]{aa5500}{4d21842}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aa00}{alice}\textcolor[HTML]{aa5500}{)} Merge branch 'bob' into alice
+\textcolor[HTML]{aa0000}{|}\textcolor[HTML]{00aa00}{\textbackslash}
+\textcolor[HTML]{aa0000}{|} * \textcolor[HTML]{aa5500}{f2af708}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD -> }\textcolor[HTML]{00aa00}{bob}\textcolor[HTML]{aa5500}{)} Add menu
+\textcolor[HTML]{aa0000}{|} * \textcolor[HTML]{aa5500}{efbd2a5} Add score
+* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{6ef17c4} Add Z-shapes
+* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{6347d69} Add L-shapes
+* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{b054512} Add line
+\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{00aa00}{/}
+* \textcolor[HTML]{aa5500}{0d0461e} Add square
+* \textcolor[HTML]{aa5500}{f4d5af4} Initial commit
         \end{Verbatim}
     \end{exampleblock}
 \end{frame}
@@ -407,10 +396,26 @@ $ git log --graph --decorate --oneline
     \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{git commit}
-    \center
-    \includegraphics[width=0.95\textwidth]{vim}
+    \begin{block}{}
+        \begin{minted}[fontsize=\footnotesize]{bash}
+Commit message
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch bob
+# Changes to be committed:
+#	modified:   main.cpp
+#
+# Changes not staged for commit:
+#	modified:   main.cpp
+#
+# Untracked files:
+#	scoreboard
+#
+        \end{minted}
+    \end{block}
 \end{frame}
 
 \begin{frame}
@@ -628,28 +633,6 @@ Changes on feature
     \pause
     \center
     \includegraphics[height=0.8\textheight]{flow}
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{minted}{bash}
-$ history | grep -P "^(\s|\d)*git" | awk '{ print $2, $3 }'
-          | sort | uniq -c | sort -n -r | head -n 15
-    304 git add
-    300 git commit
-    244 git checkout
-    148 git push
-    131 git diff
-    110 git clone
-     75 git rm
-     69 git merge
-     68 git remote
-     62 git branch
-     47 git reset
-     45 git mv
-     25 git log
-     17 git pull
-     14 git check-ignore
-    \end{minted}
 \end{frame}
 
 \begin{frame}
