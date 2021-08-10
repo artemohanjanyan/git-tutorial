@@ -1,3 +1,5 @@
+[![Build LaTeX document](https://github.com/artemohanjanyan/git-tutorial/actions/workflows/build.yml/badge.svg)](https://github.com/artemohanjanyan/git-tutorial/actions/workflows/build.yml)
+
 # Build requirements
 
 - LaTeX distribution;
