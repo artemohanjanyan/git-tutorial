@@ -157,20 +157,28 @@ $ ls versions
 
 \begin{frame}[fragile]
     \frametitle{Структура хранилища}
+    
+    \only<3-4>{Список версий?}
+    \only<5-6>{Дерево версий?}
+    \onslide<7->{Ациклический граф версий\onslide<8->{, указатели}}
 
-    Ациклический граф версий, указатели
+    \newcommand{\sinceOne}[1]{\onslide<2->{#1}}
+    \newcommand{\sinceTwo}[1]{\onslide<4->{#1}}
+    \newcommand{\sinceThree}[1]{\onslide<6->{#1}}
+    \newcommand{\sinceFour}[1]{\onslide<8->{#1}}
+
     \begin{block}{}
         \begin{Verbatim}[commandchars=\\\{\}]
-*   \textcolor[HTML]{aa5500}{4d21842}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aa00}{alice}\textcolor[HTML]{aa5500}{)} Merge branch 'bob' into alice
-\textcolor[HTML]{aa0000}{|}\textcolor[HTML]{00aa00}{\textbackslash}
-\textcolor[HTML]{aa0000}{|} * \textcolor[HTML]{aa5500}{f2af708}\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD -> }\textcolor[HTML]{00aa00}{bob}\textcolor[HTML]{aa5500}{)} Add menu
-\textcolor[HTML]{aa0000}{|} * \textcolor[HTML]{aa5500}{efbd2a5} Add score
-* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{6ef17c4} Add Z-shapes
-* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{6347d69} Add L-shapes
-* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{b054512} Add line
-\textcolor[HTML]{00aa00}{|}\textcolor[HTML]{00aa00}{/}
-* \textcolor[HTML]{aa5500}{0d0461e} Add square
-* \textcolor[HTML]{aa5500}{f4d5af4} Initial commit
+\sinceThree{*   \textcolor[HTML]{aa5500}{4d21842}}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aa00}{alice}\textcolor[HTML]{aa5500}{)}} \sinceThree{Merge branch 'bob' into alice}
+\sinceThree{\textcolor[HTML]{aa0000}{|}\textcolor[HTML]{00aa00}{\textbackslash}}
+\sinceThree{\textcolor[HTML]{aa0000}{|}} \sinceTwo{* \textcolor[HTML]{aa5500}{f2af708}}\sinceFour{\textcolor[HTML]{aa5500}{ (}\textcolor[HTML]{00aaaa}{HEAD -> }\textcolor[HTML]{00aa00}{bob}\textcolor[HTML]{aa5500}{)}} \sinceTwo{Add menu}
+\sinceThree{\textcolor[HTML]{aa0000}{|}} \sinceTwo{* \textcolor[HTML]{aa5500}{efbd2a5} Add score}
+\sinceTwo{* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{6ef17c4} Add Z-shapes}
+\sinceTwo{* \textcolor[HTML]{00aa00}{|} \textcolor[HTML]{aa5500}{6347d69} Add L-shapes}
+\sinceOne{*} \sinceTwo{\textcolor[HTML]{00aa00}{|}} \sinceOne{\textcolor[HTML]{aa5500}{b054512} Add line}
+\sinceOne{\textcolor[HTML]{00aa00}{|}}\sinceTwo{\textcolor[HTML]{00aa00}{/}}
+\sinceOne{* \textcolor[HTML]{aa5500}{0d0461e} Add square}
+\sinceOne{* \textcolor[HTML]{aa5500}{f4d5af4} Initial commit}
         \end{Verbatim}
     \end{block}
 \end{frame}
