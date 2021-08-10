@@ -1,0 +1,14 @@
+name: Build LaTeX document
+on: [push, pull_request]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Install dependenciess
+        run: |
+          sudo apt-get install texlive-full rubber
+          pip install Pygments
+      - name: Build PDF
+        run: make
