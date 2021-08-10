@@ -9,7 +9,7 @@
 - [ansi2html](https://github.com/pycontribs/ansi2html) was used for terminal
 output.
 
-# Presentation used at
+# Presentation was used at
 
 - Computer Science Center, Saint Petersburg, 27 October 2017;
-- LOL-2021, Kharkiv, 9 August 2021.
+- LOL-2021, Kharkiv, 10 August 2021.
